@@ -1,18 +1,27 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 export default function Show({ entry }) {
   const [oneEntry, setOneEntry] = useState(entry || null);
   const { id } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
-    if (!oneEntry) {
+    if (!window.initState) {
       axios(`/api/v1/entries/${id}`)
         .then((res) => setOneEntry(res.data));
+    } else {
+      delete window.initState;
     }
   }, []);
+
+  const deleteHandler = () => {
+    axios.delete(`/api/v1/entries/${id}`)
+      .then(() => navigate('/'));
+  };
+
   return (
-    <>
+    <div>
       {oneEntry
         ? (
           <>
@@ -32,6 +41,7 @@ export default function Show({ entry }) {
                   data-entryid={oneEntry.id}
                   value="delete"
                   className="no-border no-outline no-bg c-white hover-underline"
+                  onClick={deleteHandler}
                 >
                   delete
 
@@ -41,6 +51,6 @@ export default function Show({ entry }) {
           </>
         )
         : <h2> Loading </h2>}
-    </>
+    </div>
   );
 }
