@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import Edit from './Edit';
 import Entries from './Entries';
 import Header from './Header';
@@ -14,9 +15,9 @@ function App({ entries, entry }) {
         <div className="max-w-700 center">
           <Routes>
             <Route path="/" element={<Entries entries={entries} />} />
-            <Route path="/entries/:id" element={<Show entry={entry} />} />
-            <Route path="/entries/new" element={<New />} />
-            <Route path="/entries/:id/edit" element={<Edit entry={entry} />} />
+            <Route path="entries/:id" element={<Show entry={entry} />} />
+            <Route path="entries/new" element={<New />} />
+            <Route path="entries/:id/edit" element={<Edit entry={entry} />} />
           </Routes>
         </div>
 
