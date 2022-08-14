@@ -1,11 +1,13 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-hydrate(
+const container = document.getElementById('root');
+
+ReactDOMClient.hydrateRoot(
+  container,
   <BrowserRouter>
     <App {...window.initState} />
   </BrowserRouter>,
-  document.getElementById('root'),
 );

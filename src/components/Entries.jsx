@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import EntryItem from './EntryItem';
 
 export default function Entries({ entries }) {
@@ -8,8 +7,9 @@ export default function Entries({ entries }) {
 
   useEffect(() => {
     if (!entriesArr) {
-      axios('/api/v1/entries')
-        .then((res) => setEntriesArr(res.data));
+      fetch('/api/v1/entries')
+        .then((res) => res.json())
+        .then((data) => setEntriesArr(data));
     }
   }, []);
 

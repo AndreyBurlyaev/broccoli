@@ -1,12 +1,18 @@
 import { Router } from 'express';
-import template from '../template';
+import { renderToString } from 'react-dom/server';
 import { Entry } from '../db/models';
+import Layout from '../components/Layout';
+import React from 'react';
 
 const router = Router();
 
 router.get('/', async (req, res) => {
   const entries = await Entry.findAll({ order: [['id', 'DESC']] });
-  res.send(template({ entries, path: req.path }));
+   const initState = {path: req.originalUrl, entries};
+  const layout = React.createElement(Layout, { initState });
+  const html = renderToString(layout);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
 });
 
 module.exports = router;

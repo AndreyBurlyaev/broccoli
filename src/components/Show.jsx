@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
@@ -7,8 +6,9 @@ export default function Show({ entry }) {
   const { id } = useParams();
   useEffect(() => {
     if (!oneEntry) {
-      axios(`/api/v1/entries/${id}`)
-        .then((res) => setOneEntry(res.data));
+      fetch(`/api/v1/entries/${id}`)
+        .then((res) => res.json())
+        .then((data) => setOneEntry(data));
     }
   }, []);
   return (

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 function Edit({ entry }) {
   const [oneEntry, setOneEntry] = useState(entry || null);
   const { id } = useParams();
   useEffect(() => {
-    axios(`/entries/${id}`)
-      .then((res) => setOneEntry(res.data));
+    fetch(`/entries/${id}`)
+      .then((res) => res.json())
+      .then((data) => setOneEntry(data));
   }, []);
 
   return (
