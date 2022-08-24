@@ -15,4 +15,4 @@ router.get('/', async (req, res) => {
   res.end(html);
 });
 
-module.exports = router;
+export default router;
