@@ -32,4 +32,5 @@ router.get('/:id', async (req, res) => {
   res.write('<!DOCTYPE html>');
   res.end(html);
 });
-module.exports = router;
+
+export default router;
