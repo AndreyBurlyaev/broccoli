@@ -13,22 +13,10 @@ router.route('/new')
     res.redirect('/');
   });
 
-router.route('/:id/edit')
-  .get(async (req, res) => {
-    const entry = await Entry.findOne({ where: { id: req.params.id } });
-    const initState = { entry };
-    res.render('Layout', initState);
-  })
-  .post(async (req, res) => {
-    const { id } = req.params;
-    await Entry.update(req.body, { where: { id } });
-    res.redirect(`/entries/${id}`);
-  });
-
-router.get('/:id/delete', async (req, res) => {
-  const { id } = req.params;
-  await Entry.destroy({ where: { id } });
-  res.redirect('/');
+router.get('/:id/edit', async (req, res) => {
+  const entry = await Entry.findOne({ where: { id: req.params.id } });
+  const initState = { entry };
+  res.render('Layout', initState);
 });
 
 router.get('/:id', async (req, res) => {

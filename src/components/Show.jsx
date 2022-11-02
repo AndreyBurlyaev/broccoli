@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default function Show({ entry }) {
+  const deleteHandler = () => {
+    fetch(`/api/v1/entries/${entry.id}`, { method: 'DELETE' })
+      .then(() => {
+        window.location.href = '/';
+      });
+  };
+
   return (
     <div>
       {entry
@@ -16,15 +23,14 @@ export default function Show({ entry }) {
               </li>
 
               <li className="pipe-separate left">
-                <a href={`/entries/${entry.id}/delete`}>
-                  <button
-                    id="deleteEntryButton"
-                    type="button"
-                    className="no-border no-outline no-bg c-white hover-underline"
-                  >
-                    delete
-                  </button>
-                </a>
+                <button
+                  id="deleteEntryButton"
+                  type="button"
+                  onClick={deleteHandler}
+                  className="no-border no-outline no-bg c-white hover-underline"
+                >
+                  delete
+                </button>
               </li>
             </ul>
           </>

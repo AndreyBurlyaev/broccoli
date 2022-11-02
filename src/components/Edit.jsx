@@ -1,6 +1,20 @@
 import React from 'react';
 
 function Edit({ entry }) {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    fetch(`/api/v1/entries/${entry.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    })
+      .then(() => {
+        window.location.href = '/';
+      });
+  };
+
   return (
     <>
       {entry
@@ -8,13 +22,15 @@ function Edit({ entry }) {
           <div>
             <h1>Revise your thoughts on broccoli ...</h1>
 
-            <form method="post" action={`/entries/${entry.id}/edit`} id="editEntryForm">
+            <form onSubmit={submitHandler} id="editEntryForm">
               <label htmlFor="title-input" className="block mar-b-1">Title:</label>
               <input
                 id="title-input"
                 name="title"
                 type="text"
+                required="required"
                 className="block w-100 no-outline no-border pad-1 mar-b-2"
+                placeholder={entry.title}
               />
 
               <label htmlFor="body-textarea" className="block mar-b-1">Body:</label>
@@ -22,6 +38,7 @@ function Edit({ entry }) {
                 id="body-textarea"
                 name="body"
                 className="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2"
+                placeholder={entry.body}
               />
 
               <input
