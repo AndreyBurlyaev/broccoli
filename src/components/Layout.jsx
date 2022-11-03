@@ -10,8 +10,8 @@ export default function Layout({ initState }) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes" />
         <link rel="icon" href="/img/icon-48x48.png" />
-        <link rel="stylesheet" href="/stylesheets/normalize.css"/>
-        <link rel="stylesheet" href="/stylesheets/application.css"/>
+        <link rel="stylesheet" href="/stylesheets/normalize.css" />
+        <link rel="stylesheet" href="/stylesheets/application.css" />
         {/* скрипт наполнения вспомогательнго объекта initState для работы гидратации */}
         <script
           type="text/javascript"

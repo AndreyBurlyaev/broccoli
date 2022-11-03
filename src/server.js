@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/entries', entriesRouter);
+app.use('/entries/', entriesRouter);
 app.use('/api/v1/', apiRouter);
 
 app.listen(PORT, () => {

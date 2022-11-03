@@ -23,5 +23,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'react/jsx-no-useless-fragment': 0,
+    'no-console': 0,
+    'react/no-danger': 0,
   },
 };

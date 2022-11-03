@@ -3,10 +3,15 @@ import { Entry } from '../db/models';
 
 const router = Router();
 
-router.get('/new', (req, res) => {
-  const initState = { };
-  res.render('Layout', initState);
-});
+router.route('/new')
+  .get((req, res) => {
+    const initState = {};
+    res.render('Layout', initState);
+  })
+  .post(async (req, res) => {
+    await Entry.create(req.body);
+    res.redirect('/');
+  });
 
 router.get('/:id/edit', async (req, res) => {
   const entry = await Entry.findOne({ where: { id: req.params.id } });

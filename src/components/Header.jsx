@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -7,7 +6,7 @@ function Header() {
       <div className="max-w-700 center wrap-float">
         <nav className="clearfix mar-b-1">
           <ul className="no-bullets no-margin no-padding right">
-            <li className="pipe-separate t-light-green left"><Link to="/">home</Link></li>
+            <li className="pipe-separate t-light-green left"><a href="/">home</a></li>
           </ul>
         </nav>
 
