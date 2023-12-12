@@ -12,17 +12,12 @@ const app = express();
 app.engine('jsx', jsxRender);
 app.set('view engine', 'jsx');
 
-app.set('views', path.join(__dirname, 'components'));
+app.set('views', path.join(__dirname, 'components/pages'));
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-
-app.use((req, res, next) => {
-  res.locals.path = req.originalUrl;
-  next();
-});
 
 app.use('/', indexRouter);
 app.use('/entries/', entriesRouter);

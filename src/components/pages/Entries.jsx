@@ -1,5 +1,5 @@
 import React from 'react';
-import EntryItem from './EntryItem';
+import EntryItem from '../ui/EntryItem';
 
 export default function Entries({ entries }) {
   return (

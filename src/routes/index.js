@@ -6,7 +6,7 @@ const router = Router();
 router.get('/', async (req, res) => {
   const entries = await Entry.findAll({ order: [['id', 'DESC']] });
   const initState = { entries };
-  res.render('Layout', initState);
+  res.render('Entries', initState);
 });
 
 export default router;
