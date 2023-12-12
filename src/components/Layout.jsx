@@ -1,8 +1,6 @@
 import React from 'react';
-import { StaticRouter } from 'react-router-dom/server';
-import App from './App';
 
-export default function Layout({ initState }) {
+export default function Layout({ children, initState }) {
   return (
     <html lang="en">
       <head>
@@ -27,10 +25,7 @@ export default function Layout({ initState }) {
       </head>
       <body>
         <div id="root">
-          {/* компонент обёртка StaticRouter для передачи маршрута клиентским роутерам */}
-          <StaticRouter location={initState.path}>
-            <App {...initState} />
-          </StaticRouter>
+          {children}
         </div>
       </body>
     </html>
