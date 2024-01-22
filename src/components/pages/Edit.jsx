@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Edit({ entry }) {
+  const [inputs, setInputs] = useState({ title: entry.title, body: entry.body });
+
+  const inputHandler = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     fetch(`/api/v1/entries/${entry.id}`, {
@@ -27,6 +32,8 @@ function Edit({ entry }) {
               <input
                 id="title-input"
                 name="title"
+                onChange={inputHandler}
+                value={inputs.title}
                 type="text"
                 required="required"
                 className="block w-100 no-outline no-border pad-1 mar-b-2"
@@ -37,6 +44,8 @@ function Edit({ entry }) {
               <textarea
                 id="body-textarea"
                 name="body"
+                onChange={inputHandler}
+                value={inputs.body}
                 className="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2"
                 placeholder={entry.body}
               />

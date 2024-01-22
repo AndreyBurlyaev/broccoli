@@ -11,7 +11,7 @@ export default async function jsxRender(pathToFile, initState, cb) {
     initState.componentName = Component.name;
     const layout = (
       <Layout initState={initState}>
-        <App>
+        <App {...initState}>
           <Component {...initState} />
         </App>
       </Layout>

@@ -9,7 +9,7 @@ const Component = components[window.initState.componentName];
 
 ReactDOMClient.hydrateRoot(
   container,
-  <App>
+  <App {...window.initState}>
     <Component {...window.initState} />
   </App>,
 );

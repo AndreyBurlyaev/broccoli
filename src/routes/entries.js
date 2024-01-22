@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { Entry } from '../../db/models';
+import checkAuthor from '../middlewares/checkAuthor';
+// import checkAuthor from '../middlewares/checkAuthor';
 
 const router = Router();
 
@@ -10,17 +12,17 @@ router
     res.render('New', initState);
   })
   .post(async (req, res) => {
-    await Entry.create(req.body);
+    await Entry.create({ ...req.body, userId: res.locals.user.id });
     res.redirect('/');
   });
 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', checkAuthor, async (req, res) => {
   const entry = await Entry.findOne({ where: { id: req.params.id } });
   const initState = { entry };
   res.render('Edit', initState);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkAuthor, async (req, res) => {
   const entry = await Entry.findOne({ where: { id: req.params.id } });
   const initState = { entry };
   res.render('Show', initState);
