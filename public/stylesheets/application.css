@@ -294,3 +294,21 @@ input[type=text], input[type=password], textarea {
 .error {
   color: red;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-label {
+  margin-bottom: 15px;
+  width: 100%; 
+  max-width: 400px;
+}
+
+.btn btn-primary {
+  margin-top: 15px;
+   width: 100%;
+   max-width: 100px;
+}

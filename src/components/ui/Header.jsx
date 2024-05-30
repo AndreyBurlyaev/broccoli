@@ -1,42 +1,46 @@
-// import axios from 'axios';
-import React from 'react';
+import React from "react";
 
 function Header({ user }) {
-  // const logoutHandler = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.get('/api/auth/logout');
-  //     if (response.status === 200) window.location = '/';
-  //   } catch (error) {
-  //     alert(error.response.data.message);
-  //   }
-  // };
-
   return (
-    <header role="banner" className="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
-      <div className="max-w-700 center wrap-float">
-        <nav className="clearfix mar-b-1">
-          <li className="pipe-separate t-light-green left">
-            {user ? `Hello, ${user.username}` : 'Привет, Гость'}
-          </li>
-          <li className="pipe-separate t-light-green left"><a href="/">home</a></li>
-          <li className="pipe-separate t-light-green left"><a href="/profile">profile</a></li>
+    <header role="banner" className="header">
+      <div className="container">
+        <nav className="navbar" style={{justifyContent: 'space-around'}}>
+          <div className="nav-item">
+            {user ? `Hello, ${user.username}` : "Привет, Гость"}
+          </div>
+          <div className="nav-item">
+            <a className="nav-link" href="/">
+              home
+            </a>
+          </div>
+          <div className="nav-item">
+            <a className="nav-link" href="/profile">
+              profile
+            </a>
+          </div>
           {!user ? (
             <>
-              <li className="pipe-separate t-light-green left"><a href="/auth/signup">sign up</a></li>
-              <li className="pipe-separate t-light-green left"><a href="/auth/login">login</a></li>
+              <div className="nav-item">
+                <a className="nav-link" href="/auth/signup">
+                  sign up
+                </a>
+              </div>
+              <div className="nav-item">
+                <a className="nav-link" href="/auth/login">
+                  login
+                </a>
+              </div>
             </>
           ) : (
-            <>
-              <li className="pipe-separate t-light-green left"><a href="/auth/logout">logout</a></li>
-              
-            </>
+            <div className="nav-item">
+              <a className="nav-link" href="/auth/logout">
+                logout
+              </a>
+            </div>
           )}
         </nav>
-
         <div className="logo-container">
-          <img src="/images/logo.png" alt="brokk" className="center block logo" />
+          <img src="/images/logo.png" alt="brokk" className="logo" />
           <h1>Broccoli Blog</h1>
         </div>
       </div>

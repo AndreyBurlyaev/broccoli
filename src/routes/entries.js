@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { Entry } from '../../db/models';
 import checkAuthor from '../middlewares/checkAuthor';
-// import checkAuthor from '../middlewares/checkAuthor';
 
 const router = Router();
 

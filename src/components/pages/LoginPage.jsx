@@ -6,7 +6,6 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const response = await axios.post('/api/auth/login', Object.fromEntries(new FormData(e.target)));
-    //   console.log(response.data, '1111111');
       if (response.status === 200) window.location = '/';
     } catch (error) {
       alert(error.response.data.message);
@@ -14,20 +13,45 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
+    <form
+      onSubmit={submitHandler}
+      className="form-container"
+    >
+      <div className="form-group">
+        <label
+          htmlFor="exampleInputEmail1"
+          className="form-label"
+        >
           Email address
-          <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          <input
+            name="email"
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
         </label>
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
+      <div className="form-group">
+        <label
+          htmlFor="exampleInputPassword1"
+          className="form-label"
+        >
           Password
-          <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
+          <input
+            name="password"
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+          />
         </label>
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button
+        type="submit"
+        className="btn btn-primary"
+      >
+        Submit
+      </button>
     </form>
   );
 }
