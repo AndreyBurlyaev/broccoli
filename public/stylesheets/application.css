@@ -1,6 +1,4 @@
-/* *       - https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
-/* :after  - https://developer.mozilla.org/en-US/docs/Web/CSS/%3A%3Aafter*/
-/* :before - https://developer.mozilla.org/en-US/docs/Web/CSS/%3A%3Abefore */
+
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8,7 +6,6 @@
 }
 
 
-/* element styling */
 html {
   height: 100%;
   background-color: #32bb7d;
@@ -36,7 +33,6 @@ input[type=text], input[type=password], textarea {
 }
 
 
-/* positioning */
 .block {
   display: block;
 }
@@ -58,7 +54,6 @@ input[type=text], input[type=password], textarea {
 }
 
 
-/* formatting */
 .bg-dk-green {
   background-color: #05724f;
 }
@@ -97,7 +92,7 @@ input[type=text], input[type=password], textarea {
   }
 
 .clearfix:after {
-   content: " "; /* Older browser do not support empty content */
+   content: " "; 
    visibility: hidden;
    display: block;
    height: 0;
